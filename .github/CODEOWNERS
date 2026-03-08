@@ -1,0 +1,85 @@
+# .github/CODEOWNERS
+# 代码所有者配置文件
+# 参考：https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# ============================================
+# 默认规则
+# ============================================
+# 所有文件的默认审批人（技术审批）
+* @tech-lead-bot
+
+# ============================================
+# 技术负责人
+# ============================================
+# TechLead Bot 负责所有代码的技术审查
+* @Rui4u (tech-lead-bot)
+
+# ============================================
+# 前端代码
+# ============================================
+# Frontend Bot 开发，TechLead Bot 审批
+/frontend/ @Rui4u (tech-lead-bot)
+/frontend/src/ @Rui4u (tech-lead-bot)
+/frontend/components/ @Rui4u (tech-lead-bot)
+/frontend/app/ @Rui4u (tech-lead-bot)
+
+# ============================================
+# 后端代码
+# ============================================
+# Backend Bot 开发，TechLead Bot 审批
+/backend/ @Rui4u (tech-lead-bot)
+/backend/src/ @Rui4u (tech-lead-bot)
+/backend/modules/ @Rui4u (tech-lead-bot)
+
+# ============================================
+# 数据库
+# ============================================
+# 数据库 Schema 变更需要 TechLead 审批
+/prisma/schema.prisma @Rui4u (tech-lead-bot)
+/backend/prisma/ @Rui4u (tech-lead-bot)
+
+# ============================================
+# 配置文件
+# ============================================
+# 配置文件变更需要 TechLead 审批
+/package.json @Rui4u (tech-lead-bot)
+/docker-compose.yml @Rui4u (tech-lead-bot)
+.env* @Rui4u (tech-lead-bot)
+
+# ============================================
+# CI/CD 配置
+# ============================================
+# CICD Bot 开发，TechLead Bot 审批
+/.github/workflows/ @Rui4u (tech-lead-bot)
+/vercel.json @Rui4u (tech-lead-bot)
+/railway.toml @Rui4u (tech-lead-bot)
+
+# ============================================
+# 文档
+# ============================================
+# PM Bot 和 TechLead Bot 共同审批
+/docs/ @Rui4u (pm-bot) (tech-lead-bot)
+/README.md @Rui4u (pm-bot) (tech-lead-bot)
+
+# ============================================
+# 测试代码
+# ============================================
+# QA Bot 开发，TechLead Bot 审批
+/test/ @Rui4u (tech-lead-bot)
+/tests/ @Rui4u (tech-lead-bot)
+/**/*.test.ts @Rui4u (tech-lead-bot)
+/**/*.spec.ts @Rui4u (tech-lead-bot)
+
+# ============================================
+# 说明
+# ============================================
+# 审批规则：
+# 1. 技术审批：TechLead Bot（自动审查代码质量）
+# 2. 产品审批：PM Bot（审查功能完整性）
+# 3. 最终合并：CICD Bot（测试通过后自动合并）
+#
+# 自动化流程：
+# - PR 创建 → TechLead Bot 自动审查
+# - 审查通过 → QA Bot 运行测试
+# - 测试通过 → CICD Bot 自动合并
+# - 合并完成 → 自动部署
